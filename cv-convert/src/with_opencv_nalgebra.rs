@@ -389,6 +389,54 @@ where
     }
 }
 
+impl FromCv<&na::Matrix4<f64>> for core_cv::Matx44d {
+    fn from_cv(from: &na::Matrix4<f64>) -> Self {
+        Self::from_array(
+            [
+                from[(0, 0)], from[(0, 1)], from[(0, 2)], from[(0, 3)],
+                from[(1, 0)], from[(1, 1)], from[(1, 2)], from[(1, 3)],
+                from[(2, 0)], from[(2, 1)], from[(2, 2)], from[(2, 3)],
+                from[(3, 0)], from[(3, 1)], from[(3, 2)], from[(3, 3)]
+            ]
+        )
+    }
+}
+
+impl FromCv<na::Matrix4<f64>> for core_cv::Matx44d {
+    fn from_cv(from: na::Matrix4<f64>) -> Self {
+        Self::from_array(
+            [
+                from[(0, 0)], from[(0, 1)], from[(0, 2)], from[(0, 3)],
+                from[(1, 0)], from[(1, 1)], from[(1, 2)], from[(1, 3)],
+                from[(2, 0)], from[(2, 1)], from[(2, 2)], from[(2, 3)],
+                from[(3, 0)], from[(3, 1)], from[(3, 2)], from[(3, 3)]
+            ]
+        )
+    }
+}
+
+impl FromCv<&core_cv::Matx44d> for na::Matrix4<f64> {
+    fn from_cv(from: &core_cv::Matx44d) -> Self {
+        Self::new(
+            from[(0, 0)], from[(0, 1)], from[(0, 2)], from[(0, 3)],
+            from[(1, 0)], from[(1, 1)], from[(1, 2)], from[(1, 3)],
+            from[(2, 0)], from[(2, 1)], from[(2, 2)], from[(2, 3)],
+            from[(3, 0)], from[(3, 1)], from[(3, 2)], from[(3, 3)]
+        )
+    }
+}
+
+impl FromCv<core_cv::Matx44d> for na::Matrix4<f64> {
+    fn from_cv(from: core_cv::Matx44d) -> Self {
+        Self::new(
+            from[(0, 0)], from[(0, 1)], from[(0, 2)], from[(0, 3)],
+            from[(1, 0)], from[(1, 1)], from[(1, 2)], from[(1, 3)],
+            from[(2, 0)], from[(2, 1)], from[(2, 2)], from[(2, 3)],
+            from[(3, 0)], from[(3, 1)], from[(3, 2)], from[(3, 3)]
+        )
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
